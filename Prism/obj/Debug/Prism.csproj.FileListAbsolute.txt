@@ -108,3 +108,6 @@ C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.csprojResolveAssemblyReference.cache
 C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.dll
 C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.pdb
+C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.Migrations.InitialCreate.resources
+C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.csproj.GenerateResource.Cache
+C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.Migrations.customApplicationUser.resources

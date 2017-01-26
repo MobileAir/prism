@@ -65,8 +65,13 @@ namespace Prism.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        public string Firstname { get; set; }
+
+        [Required]
+        public string Lastname { get; set; }
+
+        [Required]
+        [Display(Name = "Username")]
         public string Email { get; set; }
 
         [Required]
