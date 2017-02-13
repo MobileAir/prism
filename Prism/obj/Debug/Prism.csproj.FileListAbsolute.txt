@@ -111,3 +111,5 @@ C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.pdb
 C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.Migrations.InitialCreate.resources
 C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.csproj.GenerateResource.Cache
 C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.Migrations.customApplicationUser.resources
+C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.Migrations.SetrequiredfieldsforApplicationUser.resources
+C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.Migrations.UserAdminSetup.resources

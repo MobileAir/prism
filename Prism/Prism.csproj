@@ -162,6 +162,8 @@
     <Compile Include="Controllers\ExpenseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -173,8 +175,17 @@
     <Compile Include="Migrations\201701260847332_custom ApplicationUser.Designer.cs">
       <DependentUpon>201701260847332_custom ApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701261113342_Set required fields for ApplicationUser.cs" />
+    <Compile Include="Migrations\201701261113342_Set required fields for ApplicationUser.Designer.cs">
+      <DependentUpon>201701261113342_Set required fields for ApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702100857584_UserAdminSetup.cs" />
+    <Compile Include="Migrations\201702100857584_UserAdminSetup.Designer.cs">
+      <DependentUpon>201702100857584_UserAdminSetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\Expense.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -242,6 +253,16 @@
     <Content Include="Views\Expense\Details.cshtml" />
     <Content Include="Views\Expense\Edit.cshtml" />
     <Content Include="Views\Expense\Index.cshtml" />
+    <Content Include="Views\UserAdmin\Create.cshtml" />
+    <Content Include="Views\UserAdmin\Delete.cshtml" />
+    <Content Include="Views\UserAdmin\Details.cshtml" />
+    <Content Include="Views\UserAdmin\Edit.cshtml" />
+    <Content Include="Views\UserAdmin\Index.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -260,6 +281,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701260847332_custom ApplicationUser.resx">
       <DependentUpon>201701260847332_custom ApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701261113342_Set required fields for ApplicationUser.resx">
+      <DependentUpon>201701261113342_Set required fields for ApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702100857584_UserAdminSetup.resx">
+      <DependentUpon>201702100857584_UserAdminSetup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

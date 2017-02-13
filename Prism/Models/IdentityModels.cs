@@ -25,6 +25,13 @@ namespace Prism.Models
         }
     }
 
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole() : base() { }
+        public ApplicationRole(string name) : base(name) { }
+        public string Description { get; set; }
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -32,8 +39,10 @@ namespace Prism.Models
         {
         }
 
-        public DbSet<Expense> Expense { get; set; }
-
+        static ApplicationDbContext()
+        {
+            Database.SetInitializer<ApplicationDbContext>(new ApplicationDbInitializer());
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -49,5 +58,9 @@ namespace Prism.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Expense> Expense { get; set; }
+        public DbSet<ApplicationRole> IdentityRoles { get; set; }
+        
     }
 }

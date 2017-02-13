@@ -9,7 +9,7 @@ namespace Prism.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "Prism.Models.ApplicationDbContext";
         }
 

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -88,6 +86,20 @@ namespace Prism
         }
     }
 
+    public class ApplicationRoleManager : RoleManager<ApplicationRole>
+    {
+        public ApplicationRoleManager(IRoleStore<ApplicationRole, string> rolestore)
+            : base(rolestore)
+        {
+        }
+
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options,
+            IOwinContext context)
+        {
+            return new ApplicationRoleManager(new RoleStore<ApplicationRole>(context.Get<ApplicationDbContext>()));
+        }
+    }
+
     // Configure the application sign-in manager which is used in this application.
     public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
     {
@@ -104,6 +116,47 @@ namespace Prism
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+    }
+
+    public class ApplicationDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    {
+        protected override void Seed(ApplicationDbContext context)
+        {
+            InitializeIdentityForEf(context);
+            base.Seed(context);
+        }
+
+        public static void InitializeIdentityForEf(ApplicationDbContext db)
+        {
+            var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
+            const string name = "yomii";
+            const string password = "YomiMark1?";
+            const string rolename = "Admin";
+
+            //Create role if it doesn't exist
+            var role = roleManager.FindByName(rolename);
+            if (role == null)
+            {
+                role = new ApplicationRole(rolename);
+                roleManager.Create(role);
+            }
+
+            var user = userManager.FindByName(name);
+            if (user == null)
+            {
+                user = new ApplicationUser{UserName = name, Email = name + "@gmail.com"};
+                userManager.Create(user, password);
+                userManager.SetLockoutEnabled(user.Id, false);
+            }
+
+            //Add user to Role Admin
+            var rolesForUser = userManager.GetRoles(user.Id);
+            if (!rolesForUser.Contains(role.Name))
+            {
+                userManager.AddToRole(user.Id, role.Name);
+            }
         }
     }
 }
