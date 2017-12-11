@@ -10,6 +10,7 @@ using Prism.Models;
 
 namespace Prism.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RolesAdminController : Controller
     {
         private ApplicationUserManager _userManager;

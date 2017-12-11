@@ -1,0 +1,36 @@
+﻿@model Prism.Models.Company
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Company</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button id="submit" class="btn btn-success" onclick="location.href='@Url.Action("Edit/" +Model.CompanyID, "Company")'" value="Edit">
+        <i class="glyphicon glyphicon-edit"></i>
+        Edit
+    </button>
+
+    |
+    <button id="submit" class="btn btn-primary" value="Back to List" onclick="location.href='@Url.Action("Index")'">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Back to List
+    </button>
+
+    
+</p>

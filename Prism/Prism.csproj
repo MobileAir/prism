@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -159,52 +160,105 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\ExpenseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PositionController.cs" />
+    <Compile Include="Controllers\PriceHistoriesController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductVariantController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\SectionController.cs" />
+    <Compile Include="Controllers\StockBalanceController.cs" />
+    <Compile Include="Controllers\StockInController.cs" />
+    <Compile Include="Controllers\SupplyCartController.cs" />
+    <Compile Include="Controllers\SupplyCustomerController.cs" />
+    <Compile Include="Controllers\SupplyPaymentController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="DAL\ApplicationDbContext.cs" />
+    <Compile Include="DTO\ProductDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701141349419_InitialCreate.cs" />
-    <Compile Include="Migrations\201701141349419_InitialCreate.Designer.cs">
-      <DependentUpon>201701141349419_InitialCreate.cs</DependentUpon>
+    <Compile Include="Helper\SystemVariables.cs" />
+    <Compile Include="Migrations\201710181308449_initial.cs" />
+    <Compile Include="Migrations\201710181308449_initial.Designer.cs">
+      <DependentUpon>201710181308449_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701260847332_custom ApplicationUser.cs" />
-    <Compile Include="Migrations\201701260847332_custom ApplicationUser.Designer.cs">
-      <DependentUpon>201701260847332_custom ApplicationUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201701261113342_Set required fields for ApplicationUser.cs" />
-    <Compile Include="Migrations\201701261113342_Set required fields for ApplicationUser.Designer.cs">
-      <DependentUpon>201701261113342_Set required fields for ApplicationUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702100857584_UserAdminSetup.cs" />
-    <Compile Include="Migrations\201702100857584_UserAdminSetup.Designer.cs">
-      <DependentUpon>201702100857584_UserAdminSetup.cs</DependentUpon>
+    <Compile Include="Migrations\201710191312199_addCustomerIDToSupplyCart.cs" />
+    <Compile Include="Migrations\201710191312199_addCustomerIDToSupplyCart.Designer.cs">
+      <DependentUpon>201710191312199_addCustomerIDToSupplyCart.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\SupplyCartItem.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\POSDetail.cs" />
+    <Compile Include="Models\SupplyPayment.cs" />
+    <Compile Include="ViewModels\AdminViewModel.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Expense.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="ViewModels\CartItemViewModel.cs" />
+    <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="Models\Position.cs" />
+    <Compile Include="Models\PriceHistory.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductVariant.cs" />
+    <Compile Include="Models\Section.cs" />
+    <Compile Include="Models\StockBalance.cs" />
+    <Compile Include="Models\StockIn.cs" />
+    <Compile Include="Models\StockInItem.cs" />
+    <Compile Include="Models\SupplyCart.cs" />
+    <Compile Include="Models\SupplyCustomer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ProductProductViewModel.cs" />
+    <Compile Include="ViewModels\ProductVariantsViewModel.cs" />
+    <Compile Include="ViewModels\SaleCartViewModel.cs" />
+    <Compile Include="ViewModels\StockInIndexData.cs" />
+    <Compile Include="ViewModels\SupplyCustomerDetailViewModel.cs" />
+    <Compile Include="ViewModels\Transaction.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\normalize.css" />
+    <Content Include="Content\selectize.css" />
+    <Content Include="Content\stylesheet.css" />
+    <Content Include="Content\StyleSheet1.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\big_check.png" />
+    <Content Include="Images\big_supply.png" />
+    <Content Include="Images\sort_asc.png" />
+    <Content Include="Images\sort_asc_disabled.png" />
+    <Content Include="Images\sort_both.png" />
+    <Content Include="Images\sort_desc.png" />
+    <Content Include="Images\sort_desc_disabled.png" />
+    <Content Include="mp3\success.mp3" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\datatables.min.js" />
+    <Content Include="Scripts\defiant-latest.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.tabletojson.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -212,15 +266,25 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\SupplyPage.js" />
+    <Content Include="Scripts\SalesPage.js" />
+    <Content Include="Scripts\SalesPageCtrl.js" />
+    <Content Include="Scripts\selectize.js" />
+    <Content Include="Scripts\SupplyPageCtrl.js" />
+    <Content Include="Scripts\toWord.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -263,10 +327,74 @@
     <Content Include="Views\RolesAdmin\Details.cshtml" />
     <Content Include="Views\RolesAdmin\Edit.cshtml" />
     <Content Include="Views\RolesAdmin\Index.cshtml" />
+    <Content Include="Views\Cart\Create.cshtml" />
+    <Content Include="Views\Cart\Delete.cshtml" />
+    <Content Include="Views\Cart\Details.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Rollback.cshtml" />
+    <Content Include="Views\Company\Create.cshtml" />
+    <Content Include="Views\Company\Delete.cshtml" />
+    <Content Include="Views\Company\Details.cshtml" />
+    <Content Include="Views\Company\Edit.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
+    <Content Include="Views\Department\Create.cshtml" />
+    <Content Include="Views\Department\Delete.cshtml" />
+    <Content Include="Views\Department\Details.cshtml" />
+    <Content Include="Views\Department\Edit.cshtml" />
+    <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Position\Create.cshtml" />
+    <Content Include="Views\Position\Delete.cshtml" />
+    <Content Include="Views\Position\Details.cshtml" />
+    <Content Include="Views\Position\Edit.cshtml" />
+    <Content Include="Views\Position\Index.cshtml" />
+    <Content Include="Views\PriceHistories\Create.cshtml" />
+    <Content Include="Views\PriceHistories\Delete.cshtml" />
+    <Content Include="Views\PriceHistories\Details.cshtml" />
+    <Content Include="Views\PriceHistories\Edit.cshtml" />
+    <Content Include="Views\PriceHistories\Index.cshtml" />
+    <Content Include="Views\ProductVariant\Create.cshtml" />
+    <Content Include="Views\ProductVariant\Delete.cshtml" />
+    <Content Include="Views\ProductVariant\Details.cshtml" />
+    <Content Include="Views\ProductVariant\Edit.cshtml" />
+    <Content Include="Views\ProductVariant\Index.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\CreateVariants.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Section\Create.cshtml" />
+    <Content Include="Views\Section\Delete.cshtml" />
+    <Content Include="Views\Section\Details.cshtml" />
+    <Content Include="Views\Section\Edit.cshtml" />
+    <Content Include="Views\Section\Index.cshtml" />
+    <Content Include="Views\StockBalance\Index.cshtml" />
+    <Content Include="Views\StockIn\Create.cshtml" />
+    <Content Include="Views\StockIn\Details.cshtml" />
+    <Content Include="Views\StockIn\Index.cshtml" />
+    <Content Include="Views\SupplyCustomer\Create.cshtml" />
+    <Content Include="Views\SupplyCustomer\Delete.cshtml" />
+    <Content Include="Views\SupplyCustomer\Details.cshtml" />
+    <Content Include="Views\SupplyCustomer\Edit.cshtml" />
+    <Content Include="Views\SupplyCustomer\Index.cshtml" />
+    <Content Include="Views\SupplyCart\Create.cshtml" />
+    <Content Include="Views\SupplyCart\Delete.cshtml" />
+    <Content Include="Views\SupplyCart\Details.cshtml" />
+    <Content Include="Views\SupplyCart\Index.cshtml" />
+    <Content Include="Views\SupplyCart\Rollback.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\SupplyPayment\Create.cshtml" />
+    <Content Include="Views\SupplyPayment\Delete.cshtml" />
+    <Content Include="Views\SupplyPayment\Details.cshtml" />
+    <Content Include="Views\SupplyPayment\Edit.cshtml" />
+    <Content Include="Views\SupplyPayment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DAL\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -276,17 +404,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701141349419_InitialCreate.resx">
-      <DependentUpon>201701141349419_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710181308449_initial.resx">
+      <DependentUpon>201710181308449_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701260847332_custom ApplicationUser.resx">
-      <DependentUpon>201701260847332_custom ApplicationUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701261113342_Set required fields for ApplicationUser.resx">
-      <DependentUpon>201701261113342_Set required fields for ApplicationUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702100857584_UserAdminSetup.resx">
-      <DependentUpon>201702100857584_UserAdminSetup.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710191312199_addCustomerIDToSupplyCart.resx">
+      <DependentUpon>201710191312199_addCustomerIDToSupplyCart.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

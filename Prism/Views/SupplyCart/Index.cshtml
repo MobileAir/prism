@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Prism.Models.SupplyCart>
+@Scripts.Render("~/bundles/dataTable")
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @Html.ActionLink("New Supply", "Create")
+</p>
+<h1><small>Supply list for </small>@ViewBag.Day</h1>
+<hr />
+
+@using (Html.BeginForm())
+{
+    <div class="row bg-lightBlue">
+        <div class="col-xs-3">Select Date: <input id="date" name="date" type="date" /></div>
+        <div class="col-xs-3">User: @Html.DropDownList("UserName", String.Empty)</div>
+        <div class="col-xs-3"><button class="btn btn-primary">Search</button></div>
+        <div class="col-xs-3"><h3>Total: <span class="text-primary">@ViewBag.Total</span></h3></div>
+    </div>
+}
+
+<br />
+@if (Model.Any())
+{
+    <table class="table table-striped" id="table">
+        <thead>
+            <tr>
+                <th>S/N</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    Cust. Name
+                </th>
+                <th>
+                    Items
+                </th>
+                <th>
+                    Total
+                </th>
+                <th>
+                    Sold By
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+    var index = Model.Count();
+            }
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @index
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SupplyCustomer.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumberOfItems)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalValue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApplicationUser.Fullname)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.SupplyCartID })
+                    </td>
+                </tr>
+                index--;
+            }
+        </tbody>
+
+
+    </table>
+}
+else
+{
+    <h3>There was no activity on the selected date.</h3>
+}
+
+<script>
+    $(document).ready(function () {
+        $('#table').DataTable({
+            "ordering": true
+        });
+    });
+</script>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Prism.Models.Position>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <button id="submit" class="btn btn-primary" onclick="location.href='@Url.Action("create")'" value="Create">
+        <i class="glyphicon glyphicon-folder-open"></i>
+        Create
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PositionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShelfType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Side)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Level)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PositionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShelfType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SerialNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Side)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Level)
+        </td>
+        <td>
+            <button id="submit" class="btn btn-success" onclick="location.href='@Url.Action("Edit/" +item.PositionID, "Position")'" value="Edit">
+                <i class="glyphicon glyphicon-edit"></i>
+                Edit
+            </button>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.PositionID }) |*@
+            @*@Html.ActionLink("Details", "Details", new { id=item.PositionID }) |*@
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.PositionID })*@
+        </td>
+    </tr>
+}
+
+</table>

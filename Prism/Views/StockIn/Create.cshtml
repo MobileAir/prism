@@ -1,0 +1,189 @@
+﻿@model Prism.Models.StockIn
+
+@{
+    ViewBag.Title = "Stock In";
+}
+
+<script src="~/Scripts/selectize.js"></script>
+<script src="~/Scripts/jquery.tabletojson.min.js"></script>
+
+<h2>Enter New Stock</h2>
+<hr />
+
+<div class="form-horizontal">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.InvoiceNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.InvoiceNumber, new { @class = "form-control", @id = "invoiceNumber" })
+                @Html.ValidationMessageFor(model => model.InvoiceNumber)
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="ProductID">Product:</label>
+            <div class="col-md-10">
+                @Html.DropDownList("ProductID", (SelectList)ViewBag.ProductVariantID, "Select Product")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="quantity">Quantity:</label>
+            <div class="col-md-10">
+                <input id="quantity" class="form-control" type="number" size="20" disabled="true" min="1" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="remark">Remarks:</label>
+            <div class="col-md-10">
+                <input id="remark" class="form-control" size="20" />
+            </div>
+        </div>
+
+    }
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input id="add_button" type="submit" value="Add" class="btn btn-primary" disabled="true" />
+        </div>
+    </div>
+</div>
+
+
+@*------------------------------------------------------*@
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<div class="col-md-offset-2 col-md-10">
+    <table id="stockTable" class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>SN</th>
+                <th>Name</th>
+                <th hidden>ProductVariantID</th>
+                <th>Quantity</th>
+                <th>Previous Balance</th>
+                <th>Total</th>
+                <th>Remark</th>
+
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+
+    </table>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
+
+
+<button id="stockIn_btn" class="btn btn-success">Stock In</button>
+<script>
+    $('#ProductID').selectize({
+        create: true,
+        sortField: {
+            field: 'text',
+            direction: 'asc'
+        },
+        dropdownParent: 'body'
+    });
+    var index = 1;
+    $('#add_button').click(function () {
+        var quantityy = $('#quantity').val();
+        if (isNaN(quantityy) || quantityy === "") {
+            alert("Please, enter a quantity");
+            return;
+        } else {
+
+            var productId = $('#ProductID').val();
+            var productName = $('#ProductID option:selected').text();
+            var qty = $('#quantity').val();
+            var remark = $('#remark').val();
+
+            if (IsInProductList(productName)) {
+                alert("Product is already in the Stock In table");
+                return;
+            };
+
+            $.post("/StockIn/GetProductBalance/",
+            {
+                ProductID: productId
+            },
+            function (data) {
+                var prevBalance = data;
+                var total = parseFloat(prevBalance) + parseFloat(qty);
+                $('#stockTable > tbody:last-child').append('<tr><td>' + index + '</td><td>' + productName + '</td><td hidden="true">' + productId + '</td><td>' + qty + '</td><td>' + prevBalance + '</td><td>' + total + '</td><td>' + remark + '</td><td><button class="btn btn-danger deleteBtn">Delete</button></td></tr>');
+                index++;
+            }
+            );
+
+            //clear values
+            $('#quantity').val("");
+            $('#ProductID').prop('selectedIndex', 0);
+        }
+
+    });
+
+    function IsInProductList(productName, productId) {
+        if ($('#stockTable td:contains(' + productName + ')').length) {
+            return true;
+        }
+    }
+
+
+    $('#stockTable').on('click', '.deleteBtn', function () {
+        $(this).parent().parent().remove();
+    });
+
+
+
+    $('#ProductID').change(function () {
+        $('#quantity').prop("disabled", false);
+        $('#add_button').prop("disabled", false);
+    });
+
+
+
+
+    $('#stockIn_btn').click(function () {
+        var invoiceNum = $('#invoiceNumber').val();
+        if (invoiceNum.length === 0) {
+            alert("Invoice Number cannot be empty");
+            return;
+        };
+        var table = $('#stockTable').tableToJSON({
+            onlyColumns: [2, 3, 6]
+        });
+
+        $.post("/StockIn/create/",
+        {
+            stockInItemsJson: JSON.stringify(table),
+            invoiceNumber: invoiceNum
+        },
+        function (data) {
+            alert(data);
+            window.location = "/StockIn";
+        }
+        );
+
+        //alert(JSON.stringify(table));
+    });
+
+</script>

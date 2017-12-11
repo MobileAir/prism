@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Prism.Models.Section>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>List of Sections</h3>
+
+<p>
+    <button id="submit" class="btn btn-primary" onclick="location.href='@Url.Action("Create")'" value="Create">
+        <i class="glyphicon glyphicon-plus"></i>
+        Create
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.SectionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SectionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SectionID })*@
+
+            <button id="submit" class="btn btn-success" onclick="location.href='@Url.Action("Edit/" +item.SectionID, "Section")'" value="Edit">
+                <i class="glyphicon glyphicon-edit"></i>
+                Edit
+            </button>
+            |
+            <button id="submit" class="btn btn-warning" onclick="location.href='@Url.Action("Details/" + item.SectionID, "Section")'" value="Details">
+                <i class="glyphicon glyphicon-th-list"></i>
+                Details
+            </button>
+        </td>
+    </tr>
+}
+
+</table>

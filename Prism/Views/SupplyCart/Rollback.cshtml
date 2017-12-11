@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Prism.Models.Cart>
+
+@{
+    ViewBag.Title = "Rollback List";
+}
+<h1>@ViewBag.count</h1>
+<h3>Rollback List</h3>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Rollback Date
+        </th>
+        <th>
+            Sold Date
+        </th>
+        <th>
+            Cust. Name
+        </th>
+        <th>
+            Items
+        </th>
+        <th>
+            Total
+        </th>
+        <th>
+            Sold By
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RolledBackDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfItems)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalValue)
+        </td>
+        <td>
+            Teller Name
+        </td>
+        <td>
+           @Html.ActionLink("Details", "Details", new { id=item.CartID }) 
+        </td>
+    </tr>
+}
+
+</table>

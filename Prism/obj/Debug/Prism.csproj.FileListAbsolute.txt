@@ -1,115 +1,58 @@
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Prism.dll.config
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Prism.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Prism.pdb
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Antlr3.Runtime.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\EntityFramework.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\EntityFramework.SqlServer.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.AspNet.Identity.Core.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.AspNet.Identity.Owin.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Host.SystemWeb.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Cookies.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Facebook.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Google.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.OAuth.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Twitter.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Newtonsoft.Json.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Owin.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.Helpers.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.Mvc.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.Optimization.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.Razor.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.WebPages.Deployment.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.WebPages.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.WebPages.Razor.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\WebGrease.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.Helpers.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.Mvc.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.Optimization.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.Razor.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.WebPages.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.WebPages.Deployment.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\System.Web.WebPages.Razor.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Antlr3.Runtime.pdb
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Newtonsoft.Json.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\EntityFramework.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\EntityFramework.SqlServer.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.AspNet.Identity.Core.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.AspNet.Identity.Owin.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Host.SystemWeb.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Facebook.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Cookies.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Google.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Twitter.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\obj\Debug\Prism.csprojResolveAssemblyReference.cache
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\obj\Debug\Prism.dll
-C:\Users\HP USER\Desktop\Prism-Lois\Prism\Prism\obj\Debug\Prism.pdb
-C:\Prism-Lois\Prism\Prism\bin\Prism.dll.config
-C:\Prism-Lois\Prism\Prism\bin\Prism.dll
-C:\Prism-Lois\Prism\Prism\bin\Prism.pdb
-C:\Prism-Lois\Prism\Prism\bin\Antlr3.Runtime.dll
-C:\Prism-Lois\Prism\Prism\bin\EntityFramework.dll
-C:\Prism-Lois\Prism\Prism\bin\EntityFramework.SqlServer.dll
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.AspNet.Identity.Core.dll
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.AspNet.Identity.Owin.dll
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.dll
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Host.SystemWeb.dll
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Cookies.dll
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.dll
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Facebook.dll
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Google.dll
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.OAuth.dll
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Twitter.dll
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Web.Infrastructure.dll
-C:\Prism-Lois\Prism\Prism\bin\Newtonsoft.Json.dll
-C:\Prism-Lois\Prism\Prism\bin\Owin.dll
-C:\Prism-Lois\Prism\Prism\bin\System.Web.Helpers.dll
-C:\Prism-Lois\Prism\Prism\bin\System.Web.Mvc.dll
-C:\Prism-Lois\Prism\Prism\bin\System.Web.Optimization.dll
-C:\Prism-Lois\Prism\Prism\bin\System.Web.Razor.dll
-C:\Prism-Lois\Prism\Prism\bin\System.Web.WebPages.Deployment.dll
-C:\Prism-Lois\Prism\Prism\bin\System.Web.WebPages.dll
-C:\Prism-Lois\Prism\Prism\bin\System.Web.WebPages.Razor.dll
-C:\Prism-Lois\Prism\Prism\bin\WebGrease.dll
-C:\Prism-Lois\Prism\Prism\bin\System.Web.Helpers.xml
-C:\Prism-Lois\Prism\Prism\bin\System.Web.Mvc.xml
-C:\Prism-Lois\Prism\Prism\bin\System.Web.Optimization.xml
-C:\Prism-Lois\Prism\Prism\bin\System.Web.Razor.xml
-C:\Prism-Lois\Prism\Prism\bin\System.Web.WebPages.xml
-C:\Prism-Lois\Prism\Prism\bin\System.Web.WebPages.Deployment.xml
-C:\Prism-Lois\Prism\Prism\bin\System.Web.WebPages.Razor.xml
-C:\Prism-Lois\Prism\Prism\bin\Antlr3.Runtime.pdb
-C:\Prism-Lois\Prism\Prism\bin\Newtonsoft.Json.xml
-C:\Prism-Lois\Prism\Prism\bin\EntityFramework.xml
-C:\Prism-Lois\Prism\Prism\bin\EntityFramework.SqlServer.xml
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.AspNet.Identity.Core.xml
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.AspNet.Identity.Owin.xml
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.xml
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Host.SystemWeb.xml
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.xml
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Facebook.xml
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Cookies.xml
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Google.xml
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.Twitter.xml
-C:\Prism-Lois\Prism\Prism\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.csprojResolveAssemblyReference.cache
-C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.dll
-C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.pdb
-C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.Migrations.InitialCreate.resources
-C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.csproj.GenerateResource.Cache
-C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.Migrations.customApplicationUser.resources
-C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.Migrations.SetrequiredfieldsforApplicationUser.resources
-C:\Prism-Lois\Prism\Prism\obj\Debug\Prism.Migrations.UserAdminSetup.resources
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Prism.dll.config
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Prism.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Prism.pdb
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Antlr3.Runtime.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\EntityFramework.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\EntityFramework.SqlServer.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.AspNet.Identity.Core.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.AspNet.Identity.Owin.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Host.SystemWeb.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.Cookies.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.Facebook.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.Google.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.OAuth.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.Twitter.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Web.Infrastructure.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Newtonsoft.Json.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Owin.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.Helpers.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.Mvc.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.Optimization.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.Razor.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.WebPages.Deployment.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.WebPages.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.WebPages.Razor.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\WebGrease.dll
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.Helpers.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.Mvc.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.Optimization.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.Razor.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.WebPages.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.WebPages.Deployment.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\System.Web.WebPages.Razor.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Antlr3.Runtime.pdb
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Newtonsoft.Json.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\EntityFramework.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\EntityFramework.SqlServer.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.AspNet.Identity.Core.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.AspNet.Identity.Owin.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Host.SystemWeb.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.Facebook.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.Cookies.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.OAuth.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.Google.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.Twitter.xml
+\\Mac\Home\Documents\Work\Prism\Prism\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+\\Mac\Home\Documents\Work\Prism\Prism\obj\Debug\Prism.Migrations.initial.resources
+\\Mac\Home\Documents\Work\Prism\Prism\obj\Debug\Prism.Migrations.addCustomerIDToSupplyCart.resources
+\\Mac\Home\Documents\Work\Prism\Prism\obj\Debug\Prism.csproj.GenerateResource.Cache
+\\Mac\Home\Documents\Work\Prism\Prism\obj\Debug\Prism.dll
+\\Mac\Home\Documents\Work\Prism\Prism\obj\Debug\Prism.pdb
+\\Mac\Home\Documents\Work\Prism\Prism\obj\Debug\Prism.csprojResolveAssemblyReference.cache

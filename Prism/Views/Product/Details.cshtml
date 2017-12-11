@@ -1,0 +1,178 @@
+﻿@model Prism.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+<style type="text/css">
+    .clickable tr {
+        cursor: pointer;
+    }
+</style>
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetWeather)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetWeather)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SellingPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SellingPrice)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.SupplyPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SupplyPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
+    </dl>
+</div>
+<p>
+    <button id="submit" class="btn btn-success" onclick="location.href='@Url.Action("Edit/" +Model.ProductID, "Product")'" value="Edit">
+        <i class="glyphicon glyphicon-edit"></i>
+        Edit
+    </button>
+
+    <button id="submit" class="btn btn-primary" value="Back to List" onclick="location.href='@Url.Action("Index")'">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Back to List
+    </button>
+</p>
+<br/>
+
+<div class="row">
+    <div class="col-xs-6">
+        <h2>Price History</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Date</th>
+                    <th>Cost</th>
+                    <th>Selling</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var index = Model.PriceHistory.Count();
+                }
+                @foreach (var item in Model.PriceHistory)
+                {
+                    <tr>
+                        <td>
+                            @index
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateInserted)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CostPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SellingPrice)
+                        </td>
+                    </tr>
+                    index--;
+                }
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="col-xs-6">
+        <h2>Product Variants</h2>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Date</th>
+                    <th>UPC</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var i = Model.ProductVariant.Count();
+                }
+                @foreach (var item in Model.ProductVariant)
+                {
+                    <tr class="clickable" onclick="location.href = '@(Url.Action("Details", "ProductVariants", new {id = item.ProductVariantID}))'">
+                        <td>
+                            @i
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateAdded)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UPC)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                    </tr>
+                    i--;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+﻿@model Prism.Models.Position
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script type="text/javascript">
+
+
+    function getCode() {
+        var ShelftypeName = document.getElementById('ShelfType').value;
+        var number = document.getElementById('SerialNumber').value;
+        var side = document.getElementById('Side').value;
+        var level = document.getElementById('Level').value;
+        document.getElementById('PositionID').value = ShelftypeName + number + side + level;
+     //   alert(ShelftypeName + number + side + level);
+    }
+
+    function shelfTypeChange() {
+
+        if (document.getElementById('ShelfType').value == 'W') {
+            //
+            //var x = document.getElementById('Side');
+            //var y = document.getElementById('Side').options;
+
+
+            //if (x.selectedIndex == 0) {
+            //    x.remove(0);
+
+            //}
+        }
+
+        getCode();
+        
+    }
+
+</script>
+<h2>Edit</h2>
+<h3 id="xy"></h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Position</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.PositionID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShelfType, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ShelfType, new SelectList(new List<Object> { new { value = 'C', text = "Center" }, new { value = 'W', text = "Wall" } }, "value", "text", 2), new { @onchange = "shelfTypeChange();" })
+                @Html.ValidationMessageFor(model => model.ShelfType)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SerialNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.SerialNumber, new { @onchange = "shelfTypeChange();" })
+                @Html.ValidationMessageFor(model => model.SerialNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Side, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Side, new SelectList(new List<Object> { new { value = 'F', text = "Front" }, new { value = 'B', text = "Back" } }, "value", "text", 2), new { @onchange = "shelfTypeChange();" })
+                @Html.ValidationMessageFor(model => model.Side)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Level, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Level, new { @onchange = "getCode();" })
+                @Html.ValidationMessageFor(model => model.Level)
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.PositionID, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.PositionID)
+                @Html.ValidationMessageFor(model => model.PositionID)
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button id="submit" class="btn btn-success" value="Save">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+
+    <button id="submit" class="btn btn-primary" value="Back to List" onclick="location.href='@Url.Action("Index")'">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Back to List
+    </button>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

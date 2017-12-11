@@ -1,0 +1,73 @@
+﻿@model Prism.ViewModels.SupplyCustomerDetailViewModel
+@Scripts.Render("~/bundles/dataTable")
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Supply Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SupplyCustomer.Name)
+        </dt>
+
+        <dd>
+            <h1>@Html.DisplayFor(model => model.SupplyCustomer.Name)</h1>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SupplyCustomer.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SupplyCustomer.PhoneNumber)
+        </dd>
+
+        <dt>
+            Debit
+        </dt>
+        <dd>
+            @ViewBag.CurrentDebit
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SupplyCustomer.SupplyCustomerID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<table id="table" class="table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Debit</th>
+            <th>Credit</th>
+            <th>Remark</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Transactions)
+        {
+            <tr>
+                <td>@item.Date.ToShortDateString()</td>
+                <td>@item.Debit</td>
+                <td>@item.Credit</td>
+                <td>@item.Remark</td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $('#table').DataTable({
+            "ordering": true
+        });
+    });
+</script>

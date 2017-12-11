@@ -1,14 +1,24 @@
 ﻿@model IEnumerable<Prism.Models.Expense>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Expenses for ";
 }
 
-<h2>Index</h2>
+<h2>Expense List for @ViewBag.Date</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<div class="col-sm-3 col-md-3 pull-right">
+    <form class="navbar-form" role="search">
+        <div class="input-group">
+            <input type="date" class="form-control" placeholder="Pick a Date" name="date" id="date">
+            <div class="input-group-btn">
+                <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
 <table class="table">
     <tr>
         <th>

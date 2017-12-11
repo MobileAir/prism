@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Prism.Models.StockBalance>
+@Scripts.Render("~/bundles/dataTable")
+@{
+    ViewBag.Title = "Stock Balance";
+}
+
+<style>
+    .RedClass {
+        color: red;
+        font-weight: bold
+    }
+
+   #balanceTable .orangeClass {
+        background-color: orange !important 
+    }
+</style>
+
+<h2>Stock Balances</h2>
+
+
+<table class="display table table-striped" id="balanceTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductVariant.UPC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductVariant.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr class="@(item.Quantity<=1? "orangeClass":"")">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductVariant.UPC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductVariant.FullName)
+                </td>
+                <td class="@(item.Quantity<=1? "RedClass":"")">
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function() {
+        $('#balanceTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'excel', 'pdf', 'print'
+            ]
+        });
+    });
+</script>

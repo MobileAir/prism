@@ -2,24 +2,39 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Prism.DAL;
+using Prism.Helper;
 using Prism.Models;
 
 namespace Prism.Controllers
 {
+    [Authorize(Roles="Admin, Manager")]
     public class ExpenseController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Expense
-        public ActionResult Index()
+        public ActionResult Index(DateTime? date)
         {
-            return View(db.Expense.ToList());
+            if (date == null)
+            {
+                ViewBag.Date = "Today";
+                return View(db.Expense.Where(e => DbFunctions.TruncateTime(e.Date) == DbFunctions.TruncateTime(DateTime.UtcNow)).ToList());
+                
+            }
+            else
+            {
+                ViewBag.Date = ((DateTime)date).ToShortDateString();
+                return View(db.Expense.Where(e => DbFunctions.TruncateTime(e.Date) == DbFunctions.TruncateTime(date)).ToList());
+            }
+            
         }
 
         // GET: Expense/Details/5
@@ -46,12 +61,13 @@ namespace Prism.Controllers
         // POST: Expense/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Expense expense)
         {
             var userID = User.Identity.GetUserId();
-            var currentUser = db.Users.SingleOrDefault(u => u.Id == userID);
+            var currentUser = (new SystemVariables(db)).GetCurrentUser();
 
             expense.Date = DateTime.Now;
             expense.ApplicationUser = currentUser;

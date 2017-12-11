@@ -3,9 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>Index</h2>
+<h3>List of Users</h3>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button id="submit" class="btn btn-primary" onclick="location.href='@Url.Action("Create")'" value="Create">
+        <i class="glyphicon glyphicon-plus"></i>
+        Create
+    </button>
 </p>
 <table class="table">
     <tr>

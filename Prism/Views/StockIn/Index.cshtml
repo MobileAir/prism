@@ -1,0 +1,96 @@
+﻿@model Prism.ViewModels.StockInIndexData
+@Scripts.Render("~/bundles/dataTable")
+
+@{
+    ViewBag.Title = "Stock In List";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4">
+            <h1>Stock-In List</h1>
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table" id="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Invoice No.
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.StockIns)
+                    {
+                        var selectedRow = "";
+                        var selectedRowArrow = "";
+                        if (item.StockInID == ViewBag.StockInID)
+                        {
+                            selectedRow = "alert alert-info";
+                            selectedRowArrow = "glyphicon glyphicon-chevron-right";
+                        }
+                        <tr class="@selectedRow">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.InvoiceNumber)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Details", "Index", new { id = item.StockInID })
+                                @*@Html.ActionLink("Edit", "Edit", new { id=item.StockInID }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.StockInID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.StockInID })*@
+                            </td>
+                            <td>
+                                <span class="@selectedRowArrow"></span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        @if (Model.StockInItems != null)
+        {
+            <div class="col-xs-8 alert alert-info">
+
+                <h2>Stock-In Items</h2>
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Previous Bal.</th>
+                        <th>Total</th>
+                        <th>Remark</th>
+                    </tr>
+                    @foreach (var item in Model.StockInItems)
+                    {
+                        <tr>
+                            <td>@item.ProductVariant.FullName</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.PreviousQuantity</td>
+                            <td>@item.NewBalance</td>
+                            <td>@item.Remark</td>
+                        </tr>
+                    }
+                </table>
+
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#table').DataTable({
+            "ordering": true
+        });
+    });
+</script>

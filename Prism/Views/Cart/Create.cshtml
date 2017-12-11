@@ -1,0 +1,164 @@
+﻿@using WebGrease.Css.Ast.MediaQuery
+@model Prism.Models.Cart
+
+@{
+    ViewBag.Title = "Create";
+}
+<style type="text/css">
+    #summary {
+        width: 200px;
+        /*position: fixed;
+        top: 150px;
+        bottom: auto;
+        right: 100px;
+        left: auto;*/
+        background: #F5F5F5;
+        padding: 10px;
+        border: blue;
+        border-width: 6px;
+        display: block;
+    }
+
+    
+    #upcClear {
+        position: absolute;
+        right: 5px;
+        top: 0;
+        bottom: 0;
+        height: 25px;
+        margin: auto;
+        font-size: 25px;
+        cursor: pointer;
+        color: #ccc;
+    }
+
+    .positiveChange {
+        font-size: 24px;
+        background-color: green;
+        color: white;
+        padding: 0 5px 0 5px;
+    }
+
+    .negativeChange {
+        font-size: 24px;
+        background-color: red;
+        color: white;
+        padding: 0 5px 0 5px;
+    }
+
+    #posCode{
+        display: none
+    }
+    
+</style>
+<h4>Cart</h4>
+<div class="row">
+    <div>
+        @*<h3><label for="upc" class="label label-primary btn-lg btn">UPC or Name</label></h3>*@
+        <div class="btn-group">
+            <input id="upc" class="input-lg form-control" size="80" placeholder="Enter item UPC or Customer" oninput="FindProduct()" autofocus="autofocus" type="text"/>
+            <span id="upcClear" class="glyphicon glyphicon-remove-circle "></span>
+        </div>
+        
+        
+        <button class="btn-success btn" onclick="EnterUPC('123467')">S/Water</button>
+        <button class="btn-success btn" onclick="EnterUPC('12345')">50cl LOIS</button>
+        <button class="btn-success btn" onclick="EnterUPC('23456')">75cl LOIS</button>
+        <button class="btn-success btn" onclick="EnterUPC('1342')">Refill</button>
+        
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <br />
+        <select id="productName" onchange="FindProductByName()"></select>
+        <br />
+    </div>
+    <div class="col-sm-8"></div>
+    
+</div>
+
+<div class="row" ng-app="salesCart" ng-controller="salesCartCtrl">
+    <div class="col-sm-10">
+        
+
+        
+            <div id="mainApp">
+                <div class="form-horizontal">
+                    
+                    <div class="row">
+                        <div class="col-sm-4">
+                            @*<input id="customerName" class="col-sm-6"  placeholder="Customer Name" />*@
+                            @Html.DropDownList("CustomerID", String.Empty)
+                        </div>
+                        <div class="pull-right">Reciept Number: <input name="recieptNumber" id="recieptNumber" value="@ViewBag.RecieptNumber" readonly /></div>
+                    </div>
+                        
+                    <hr />
+                    <table class="table table-striped table-hover" id="productsTable">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>UPC</th>
+                                <th>Name</th>
+                                <th>Unit Price</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-animate="'animate'" ng-repeat="product in cart">
+                                <td>{{$index+1}}</td>
+                                <td>{{product.UPC}}</td>
+                                <td>{{product.Name}}</td>
+                                <td>{{product.UnitPrice}}</td>
+                                <td><input type="number" min="0" max="1000" ng-model="product.qty" style="width: 50px" value="{{product.qty}}" /><span hidden>{{product.qty}}</span></td>
+                                <td>{{product.UnitPrice * product.qty}}</td>
+                                <td class="noPrint"><button class="btn-danger btn btn-sm" ng-click="removeItem($index)">Delete</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 id="totalForPrint">Total: &#8358{{getSumOfProducts()}}</h3> @*hidden or displayed for print by style in Site.css*@
+                        
+                </div>
+                <div class="noPrint">
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
+        </div>
+    
+    <div class="col-sm-2">
+        <div id="summary">
+            <div style="margin: auto" class="text-center">
+                <h3>{{getSumOfItems()}} <small>items</small></h3>
+                <hr />
+                <h1 >&#8358<span id="sumOfProducts">{{getSumOfProducts()}}</span></h1>
+                <hr/>
+                <small style="color: gray; text-transform: capitalize">{{numToWords(getSumOfProducts())}}</small>
+                <hr />
+                <input id="amountPaid" class="input-lg form-control" ng-model="amountPaid" placeholder="Enter cash paid" tabindex="1" />
+                <br />
+                <br />
+                Pay with POS? <input id="isPOS" onchange="IsPOStransaction()" class="form-control" type="checkbox" />
+                <input id="posCode" class="input-sm form-control has-error" ng-model="posCode" placeholder="Enter POS code" tabindex="2" hidden />
+                <h2 id="change">Change is <span id="change" class="{{getChangeClass()}}">{{getChange()}}</span></h2>
+                <button id="payBtn" class="btn btn-block btn-primary btn-lg" data-ng-disabled="getPayBtnState()">Pay</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery.tabletojson.min.js"></script>
+<script src="~/Scripts/selectize.js"></script>
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/defiant-latest.min.js"></script>
+<script src="~/Scripts/toWord.js"></script>
+<script src="~/Scripts/SalesPageCtrl.js"></script>
+<script src="~/Scripts/bootbox.js"></script>
+<script src="~/Scripts/SalesPage.js"></script>
+
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+}

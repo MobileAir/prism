@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Prism.Models.Company>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>List Of Companies</h3>
+
+<p>
+    <button id="submit" class="btn btn-primary" onclick="location.href='@Url.Action("Create")'" value="Create">
+        <i class="glyphicon glyphicon-plus"></i>
+        Create
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            
+            
+
+            <button id="submit" class="btn btn-success" onclick="location.href='@Url.Action("Edit/" +item.CompanyID, "Company")'" value="Edit">
+                <i class="glyphicon glyphicon-edit"></i>
+                Edit
+            </button>
+
+            <button id="submit" class="btn btn-warning" onclick="location.href='@Url.Action("Details/" +item.CompanyID, "Company")'" value="Details">
+                <i class="glyphicon glyphicon-th-list"></i>
+                Details
+            </button>
+            
+            
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.CompanyID }) |*@
+            @*@Html.ActionLink("Details", "Details", new { id=item.CompanyID }) |*@
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.CompanyID })*@
+        </td>
+    </tr>
+}
+
+</table>

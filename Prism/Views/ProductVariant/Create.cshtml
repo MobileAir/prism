@@ -1,0 +1,80 @@
+﻿@model Prism.Models.ProductVariant
+<script>
+    $(document).ready(function () {
+        $('#ProductID').selectize({
+            create: true,
+            sortField: {
+                field: 'text',
+                direction: 'asc'
+            },
+            dropdownParent: 'body'
+        });
+    });
+</script>
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add New Product Variant</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Product Variant</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductID, "ProductID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownList("ProductID", String.Empty)*@
+                @Html.DropDownListFor(model => model.ProductID, (IEnumerable<SelectListItem>)ViewBag.ProductID, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProductID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Variant, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Variant, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Variant)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UPC, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.UPC, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UPC)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PositionID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.TextBoxFor(model => model.PositionID, new { @class = "form-control" })*@
+                @Html.DropDownListFor(model => model.PositionID, (IEnumerable<SelectListItem>)ViewBag.PositionID, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PositionID)
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script src="~/Scripts/selectize.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

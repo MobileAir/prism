@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Prism.Models;
 
 namespace Prism.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserAdminController : Controller
     {
         private ApplicationUserManager _userManager;
@@ -82,7 +79,7 @@ namespace Prism.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser()
+                var user = new ApplicationUser
                 {
                     UserName = userViewModel.UserName,
                     Firstname = userViewModel.Firstname,
@@ -131,13 +128,13 @@ namespace Prism.Controllers
 
             var userRoles = await UserManager.GetRolesAsync(user.Id);
 
-            return View(new EditUserViewModel()
+            return View(new EditUserViewModel
             {
                 Id = user.Id,
                 Username = user.UserName,
                 FirstName = user.Firstname,
                 LastName = user.Lastname,
-                RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
+                RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem
                 {
                     Selected = userRoles.Contains(x.Name),
                     Text = x.Name,
@@ -167,14 +164,14 @@ namespace Prism.Controllers
                 selectedRole = selectedRole ?? new string[] {};
 
                 var result =
-                    await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray<string>());
+                    await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray());
 
                 if (!result.Succeeded)
                 {
                     ModelState.AddModelError("", result.Errors.First());
                     return View();
                 }
-                result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray<string>());
+                result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray());
 
                 if (!result.Succeeded)
                 {

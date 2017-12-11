@@ -1,0 +1,278 @@
+﻿@model IEnumerable<Prism.Models.Cart>
+@Scripts.Render("~/bundles/dataTable")
+
+@{
+    ViewBag.Title = "Cart List";
+}
+
+<h1>@ViewBag.count</h1>
+<p>
+    @Html.ActionLink("New Sale", "Create")
+</p>
+<h3><small>Cart list for </small>@ViewBag.Day - @ViewBag.User</h3>
+<hr />
+
+@using (Html.BeginForm())
+{
+    <div class="row bg-lightBlue">
+        <div class="row">
+            <div class="col-xs-3">Select Date: <input id="date" name="date" type="date" /></div>
+            <div class="col-xs-2">User: @Html.DropDownList("Id", String.Empty)</div>
+            <div class="col-xs-2"><button class="btn btn-primary">Search</button></div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4"><div><h2>Cash: <span class="text-primary">@ViewBag.CashTotal</span></h2></div></div>
+            <div class="col-xs-4"><div><h2>POS: <span class="text-primary">@ViewBag.POSTotal</span></h2></div></div>
+            <div class="col-xs-4"><div><h3>Total: <span class="text-primary">@ViewBag.Total</span></h3></div></div>
+        </div>
+    </div>
+}
+
+<br />
+@if (Model.Any())
+{
+    <div class="container">
+        <div>
+            <div class="panel with-nav-tabs panel-default">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1default" data-toggle="tab">All Sales</a></li>
+                        <li><a href="#tab2default" data-toggle="tab">Cash Sales</a></li>
+                        <li><a href="#tab3default" data-toggle="tab">POS Sales</a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+
+                        @******** All Sales Table start**********@
+                        <div class="tab-pane fade in active" id="tab1default">
+                            <table class="table table-striped" id="table">
+                                <thead>
+                                    <tr>
+                                        <th>S/N</th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Date)
+                                        </th>
+                                        <th>
+                                            Cust. Name
+                                        </th>
+                                        <th>
+                                            Items
+                                        </th>
+                                        <th>
+                                            Total
+                                        </th>
+                                        <th>
+                                            Sold By
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+    var index = Model.Count();
+                                    }
+                                    @foreach (var item in Model)
+                                    {
+
+                                        <tr>
+                                            <td>
+                                                @index
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Date)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Customer.Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NumberOfItems)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TotalValue)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ApplicationUser.Fullname)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Details", "Details", new { id = item.CartID })
+                                            </td>
+                                        </tr>
+                                        index--;
+
+
+                                    }
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                        @******** All Sales Table end**********@
+
+                        @******** Cash Sales Table start**********@
+                        <div class="tab-pane fade" id="tab2default">
+                                <table class="table table-striped" id="table2">
+                                    <thead>
+                                        <tr>
+                                            <th>S/N</th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Date)
+                                            </th>
+                                            <th>
+                                                Cust. Name
+                                            </th>
+                                            <th>
+                                                Items
+                                            </th>
+                                            <th>
+                                                Total
+                                            </th>
+                                            <th>
+                                                Sold By
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+    var indexCash = ViewBag.CashCount;
+                                        }
+                                        @foreach (var item in Model)
+                                        {
+                                            if (!item.IsPOS)
+                                            {
+                                        <tr>
+                                            <td>
+                                                @indexCash
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Date)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Customer.Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NumberOfItems)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TotalValue)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ApplicationUser.Fullname)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Details", "Details", new { id = item.CartID })
+                                            </td>
+                                        </tr>
+                                                indexCash--;
+                                            }
+
+                                        }
+                                    </tbody>
+
+
+                                </table>
+                        </div>
+                        @******** Cash Sales Table end**********@
+
+
+                        @******** POS Sales Table start**********@
+                        <div class="tab-pane fade" id="tab3default">
+                            <table class="table table-striped" id="table3">
+                                <thead>
+                                    <tr>
+                                        <th>S/N</th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Date)
+                                        </th>
+                                        <th>
+                                            Cust. Name
+                                        </th>
+                                        <th>
+                                            Items
+                                        </th>
+                                        <th>
+                                            Total
+                                        </th>
+                                        <th>
+                                            Sold By
+                                        </th>
+                                        <th>
+                                            POS Code
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+    var indexPOS = ViewBag.POSCount;
+                                    }
+                                    @foreach (var item in Model)
+                                    {
+                                        if (item.IsPOS)
+                                        {
+                                    <tr>
+                                        <td>
+                                            @indexPOS
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Customer.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NumberOfItems)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TotalValue)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ApplicationUser.Fullname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PosDetail.POScode)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Details", "Details", new { id = item.CartID })
+                                        </td>
+                                    </tr>
+                                            indexPOS--;
+                                        }
+
+                                    }
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                        @******** POS Sales Table end**********@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    <h3>There was no activity on the selected date.</h3>
+}
+
+
+<script>
+    $(document).ready(function () {
+        $('#table').DataTable({
+            "ordering": true
+        });
+
+        $('#table2').DataTable({
+            "ordering": true
+        });
+
+        $('#table3').DataTable({
+            "ordering": true
+        });
+    });
+</script>
