@@ -28,23 +28,23 @@
                     <li>@Html.ActionLink("Cart", "Index", "Cart")</li>
                     <li>@Html.ActionLink("Supply", "Index", "SupplyCart")</li>
                     <li>@Html.ActionLink("Expenses", "Index", "Expense")</li>
-             
 
+                    @*
                     @if (User.IsInRole("Admin"))
-                    {              
-                                           
-                        
+                    {   *@
+
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Link<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li>@Html.ActionLink("Company", "Index", "Company")</li>
                                 <li>@Html.ActionLink("Section", "Index", "Section")</li>
-                                <li>@Html.ActionLink("Department", "Index", "Department")</li>  
-                                <li>@Html.ActionLink("Positions", "Index", "Position")</li>                              
+                                <li>@Html.ActionLink("Department", "Index", "Department")</li>
+                                <li>@Html.ActionLink("Positions", "Index", "Position")</li>
                                 <li>@Html.ActionLink("Users", "Index", "UserAdmin")</li>
                             </ul>
-                        </li>  
-                        
+                        </li>
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Customers<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -52,8 +52,8 @@
                                 <li>@Html.ActionLink("S.Customers", "Index", "SupplyCustomer")</li>
                                 <li>@Html.ActionLink("Payment", "Index", "SupplyPayment")</li>
                             </ul>
-                        </li>                
-                        
+                        </li>
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Products<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
@@ -63,7 +63,7 @@
                                 <li>@Html.ActionLink("Stock", "Index", "StockBalance")</li>
                             </ul>
                         </li>
-                    }
+                    @*}*@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

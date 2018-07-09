@@ -16,7 +16,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Prism.Controllers
 {
-    [Authorize(Roles = "Admin, Manager")]
+   // [Authorize(Roles = "Admin, Manager")]
     public class SupplyCartController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -30,7 +30,7 @@ namespace Prism.Controllers
             }
 
             //get list of carts that match the date, selected user and was not rolledback
-            var cartList = db.SupplyCart.Where(s => DbFunctions.TruncateTime(s.Date) == DbFunctions.TruncateTime(date)).Include(c => c.ApplicationUser).ToList().OrderByDescending(c => c.Date); //c.Date.Date wont work because DateTime.date cannot be converted to SQL 
+            var cartList = db.SupplyCart.Where(s => DbFunctions.TruncateTime(s.Date) == DbFunctions.TruncateTime(date)).Include(c => c.ApplicationUser).ToList().OrderByDescending(c => c.Date); //c.Date.Date wont work because DateTime.date cannot be converted to SQL
             var users = GetUsers();
             ViewBag.UserName = new SelectList(users, "UserName", "FullName");
             ViewBag.Total = cartList.Sum(c => c.TotalValue);
@@ -59,7 +59,7 @@ namespace Prism.Controllers
             }
             return model;
         }
-        
+
         // GET: Carts/Details/5
         public ActionResult Details(int? id)
         {
@@ -67,7 +67,7 @@ namespace Prism.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
+
             var supplyCart = db.SupplyCart.Include(c => c.SupplyCartItems).First(c => c.SupplyCartID == id);
             if (supplyCart == null)
             {
@@ -85,7 +85,7 @@ namespace Prism.Controllers
                     Name = p.Product.Name + " " + p.Variant, //linq to entities does not support calculated properties 'FullName'
                     UnitPrice = p.Product.SupplyPrice
                 };
-            
+
             return Json(productList, JsonRequestBehavior.AllowGet);
         }
 
@@ -139,7 +139,7 @@ namespace Prism.Controllers
                 UpdateQuantity(item, "subtract");
                 db.SupplyCartItem.Add(item);
             }
-            
+
             UpdateCartDetails(supplyCart.SupplyCartID, cartItemsList);
 
             db.SaveChanges();
@@ -189,7 +189,7 @@ namespace Prism.Controllers
             {
                 stockBalance.Quantity = stockBalance.Quantity + item.Quantity;
             }
-            
+
 
             db.Entry(stockBalance).State = EntityState.Modified;
         }

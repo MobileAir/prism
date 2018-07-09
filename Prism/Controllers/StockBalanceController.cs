@@ -11,7 +11,7 @@ using Prism.Models;
 
 namespace Prism.Controllers
 {
-    [Authorize(Roles = "Admin")]
+   // [Authorize(Roles = "Admin")]
     public class StockBalanceController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -14,7 +14,7 @@ using System.Data.Entity.Migrations;
 
 namespace Prism.Controllers
 {
-    [Authorize(Roles = "Admin")]
+   // [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -26,7 +26,7 @@ namespace Prism.Controllers
             try
             {
                 product = db.Product.Include(p => p.Company).Include(p => p.ProductVariant).Include(p => p.PriceHistory);
-                
+
             }
             catch (DbEntityValidationException ex)
             {
@@ -45,7 +45,7 @@ namespace Prism.Controllers
                 throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
             }
             return View(product.ToList());
-            
+
         }
 
         // GET: /Product/Details/5
@@ -63,7 +63,7 @@ namespace Prism.Controllers
             return View(product);
         }
 
-       
+
 
         // GET: /Product/Create
         public ActionResult Create()
@@ -77,7 +77,7 @@ namespace Prism.Controllers
         }
 
         // POST: /Product/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -148,7 +148,7 @@ namespace Prism.Controllers
         }
 
         // POST: /Product/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -187,7 +187,7 @@ namespace Prism.Controllers
 
                     return RedirectToAction("Index");
                 }
-                
+
             }
             ViewBag.CompanyID = new SelectList(db.Company, "CompanyID", "Name", product.CompanyID);
             ViewBag.DepartmentID = new SelectList(db.Department, "DepartmentID", "Name", product.DepartmentID);
@@ -221,7 +221,7 @@ namespace Prism.Controllers
             return RedirectToAction("Index");
         }
 
-        
+
         public ActionResult PriceHistoryView(int id)
         {
            // PriceHistory ph = db.PriceHistory.Find(id);

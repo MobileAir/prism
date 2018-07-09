@@ -11,7 +11,8 @@ namespace Prism.DAL
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext() : base("DefaultConnection", throwIfV1Schema: false)
+        public ApplicationDbContext() : base("DefaultConnection",
+            throwIfV1Schema: false)
         {
             Database.SetInitializer(new ApplicationDbInitializer());
         }
@@ -20,7 +21,7 @@ namespace Prism.DAL
         {
             Database.SetInitializer(new ApplicationDbInitializer());
         }
-        
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
@@ -100,7 +101,7 @@ namespace Prism.DAL
                 // Throw a new DbEntityValidationException with the improved exception message.
                 throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
             }
-        }       
+        }
 
     }
 }

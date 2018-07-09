@@ -15,7 +15,7 @@ using Prism.Models;
 
 namespace Prism.Controllers
 {
-    [Authorize(Roles="Admin, Manager")]
+    //[Authorize(Roles="Admin, Manager")]
     public class ExpenseController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -27,14 +27,14 @@ namespace Prism.Controllers
             {
                 ViewBag.Date = "Today";
                 return View(db.Expense.Where(e => DbFunctions.TruncateTime(e.Date) == DbFunctions.TruncateTime(DateTime.UtcNow)).ToList());
-                
+
             }
             else
             {
                 ViewBag.Date = ((DateTime)date).ToShortDateString();
                 return View(db.Expense.Where(e => DbFunctions.TruncateTime(e.Date) == DbFunctions.TruncateTime(date)).ToList());
             }
-            
+
         }
 
         // GET: Expense/Details/5
@@ -59,7 +59,7 @@ namespace Prism.Controllers
         }
 
         // POST: Expense/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize]
         [HttpPost]
@@ -72,12 +72,12 @@ namespace Prism.Controllers
             expense.Date = DateTime.Now;
             expense.ApplicationUser = currentUser;
 
-            
+
                 db.Expense.Add(expense);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            
-            
+
+
         }
 
         // GET: Expense/Edit/5
@@ -96,7 +96,7 @@ namespace Prism.Controllers
         }
 
         // POST: Expense/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]

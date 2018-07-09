@@ -12,7 +12,7 @@ using Prism.Helper;
 
 namespace Prism.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class SupplyPaymentController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -46,7 +46,7 @@ namespace Prism.Controllers
         }
 
         // POST: /SupplyPayment/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -58,10 +58,10 @@ namespace Prism.Controllers
             var customer = db.SupplyCustomer.Find(supplyPayment.SupplyCustomerID);
             supplyPayment.SupplyCustomer = customer;
                 db.SupplyPayment.Add(supplyPayment);
-                
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            
+
             //ViewBag.SupplyCustomerID = new SelectList(db.SupplyCustomer, "SupplyCustomerID", "Name");
             //return View(supplyPayment);
         }
@@ -82,7 +82,7 @@ namespace Prism.Controllers
         }
 
         // POST: /SupplyPayment/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]

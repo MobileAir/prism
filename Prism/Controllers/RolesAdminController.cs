@@ -10,7 +10,7 @@ using Prism.Models;
 
 namespace Prism.Controllers
 {
-    [Authorize(Roles = "Admin")]
+  //  [Authorize(Roles = "Admin")]
     public class RolesAdminController : Controller
     {
         private ApplicationUserManager _userManager;
@@ -26,7 +26,7 @@ namespace Prism.Controllers
             UserManager = userManager;
             RoleManager = roleManager;
         }
-        
+
         public ApplicationUserManager UserManager
         {
             get
@@ -38,7 +38,7 @@ namespace Prism.Controllers
                 _userManager = value;
             }
         }
-        
+
         public ApplicationRoleManager RoleManager
         {
             get
@@ -190,6 +190,6 @@ namespace Prism.Controllers
             }
             return RedirectToAction("Index");
         }
-        
+
     }
 }

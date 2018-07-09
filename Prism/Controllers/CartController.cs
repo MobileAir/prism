@@ -17,7 +17,7 @@ using System.Transactions;
 
 namespace Prism.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class CartController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -28,10 +28,10 @@ namespace Prism.Controllers
             if (!date.HasValue) //this is default. Which means today
             {
                 date = DateTime.Now;
-            }            
+            }
 
             //get list of carts that match the date, selected user and was not rolledback
-            var cartList = (db.Cart.Where(c => c.IsRolledBack == false && DbFunctions.TruncateTime(c.Date) == DbFunctions.TruncateTime(date)).Include(c => c.ApplicationUser).Include(c => c.Customer).ToList().OrderByDescending(c => c.Date)).ToList(); //c.Date.Date wont work because DateTime.date cannot be converted to SQL 
+            var cartList = (db.Cart.Where(c => c.IsRolledBack == false && DbFunctions.TruncateTime(c.Date) == DbFunctions.TruncateTime(date)).Include(c => c.ApplicationUser).Include(c => c.Customer).ToList().OrderByDescending(c => c.Date)).ToList(); //c.Date.Date wont work because DateTime.date cannot be converted to SQL
 
             if (Id != null && Id != "")
             {
@@ -45,7 +45,7 @@ namespace Prism.Controllers
             }
             var cashCartList = cartList.Where(c => c.IsPOS == false);
             var posCartList = cartList.Where(c => c.IsPOS);
-            
+
             var users = GetUsers();
 
             ViewBag.Id = new SelectList(users, "Id", "FullName");
@@ -95,7 +95,7 @@ namespace Prism.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
+
             Cart cart = db.Cart.Include(c => c.CartItems).First(c => c.CartID == id);
             if (cart == null)
             {
@@ -114,7 +114,7 @@ namespace Prism.Controllers
                     Name = p.Product.Name + " " + p.Variant, //linq to entities does not support calculated properties 'FullName'
                     UnitPrice = p.Product.SellingPrice
                 };
-            
+
             return Json(productList, JsonRequestBehavior.AllowGet);
         }
 
@@ -170,26 +170,26 @@ namespace Prism.Controllers
                     UpdateCartDetails(cart.CartID, cartItemsList);
 
                     if (isPOS) SavePOSDetails(cart, posCode);
-                    
+
                     db.SaveChanges();
 
                     scope.Complete();
 
                     return cartItemsList.Sum(item => item.Quantity).ToString(CultureInfo.InvariantCulture);
-                    //return "saved"                   
-                    
+                    //return "saved"
+
                 }
                 catch (Exception e)
                 {
                     return e.Message;
                 }
             }
-            
+
         }
 
         private void SavePOSDetails(Cart cart, string POSCode)
         {
-            
+
             var posDetail = new POSDetail()
             {
                 Cart = cart,
@@ -239,7 +239,7 @@ namespace Prism.Controllers
             {
                 stockBalance.Quantity = stockBalance.Quantity + item.Quantity;
             }
-            
+
 
             db.Entry(stockBalance).State = EntityState.Modified;
         }

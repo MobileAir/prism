@@ -9,7 +9,7 @@ using Prism.Models;
 
 namespace Prism.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class UserAdminController : Controller
     {
         private ApplicationUserManager _userManager;
@@ -17,7 +17,7 @@ namespace Prism.Controllers
 
         public UserAdminController()
         {
-            
+
         }
 
         public UserAdminController(ApplicationUserManager userManager, ApplicationRoleManager roleManager)
@@ -31,7 +31,7 @@ namespace Prism.Controllers
             get
             {
                 return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                
+
             }
             private set { _userManager = value; }
         }
@@ -41,7 +41,7 @@ namespace Prism.Controllers
             get
             {
                 return _roleManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
-                
+
             }
             private set { _roleManager = value; }
         }
@@ -62,7 +62,7 @@ namespace Prism.Controllers
             ApplicationUser applicationUser = await UserManager.FindByIdAsync(id);
 
             ViewBag.RoleNames = await UserManager.GetRolesAsync(applicationUser.Id);
-            
+
             return View(applicationUser);
         }
 
